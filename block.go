@@ -8,7 +8,7 @@ import (
 )
 
 type Block struct {
-	Timestanp     int64
+	Timestamp     int64
 	Data          []byte
 	PrevBlockHash []byte
 	Hash          []byte
@@ -26,4 +26,8 @@ func NewBlock(data string, prevBlockHash []byte) *Block {
 	block := &Block{time.Now().Unix(), []byte(data), prevBlockHash, []byte{}}
 	block.SetHash()
 	return block
+}
+
+func NewGenesisBlock() *Block {
+	return NewBlock("Genesis Block", []byte{})
 }
